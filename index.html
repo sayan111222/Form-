@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form with Footer</title>
+    <!-- Link to Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="form-container">
+        <form class="custom-form" name="google-sheet">
+            <h2>Fill Your Details</h2>
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" placeholder="Enter your full name">
+
+            <label for="city">City</label>
+            <input type="text" id="city" name="city" placeholder="Enter your city">
+
+            <label for="pin">Pin Code</label>
+            <input type="text" id="pin" name="pin" placeholder="Enter your pin code">
+
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
+
+            <label for="description">Description</label>
+            <textarea id="description" name="description" placeholder="Write about yourself" rows="4"></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <!-- Footer Section with Icons -->
+    <footer class="footer">
+        <p>Contact Us:</p>
+        <a href="mailto:officialsayan418@email.com" class="footer-icon"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.facebook.com" class="footer-icon" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com" class="footer-icon" target="_blank"><i class="fab fa-instagram"></i></a>
+    </footer>
+    
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxFz7qAb4GwvV7FO-0Nf6FhD7oop555-7sAhatIBHf44B-NMSDMv_BJNqdp2N9_9HpaoA/exec'
+        const form = document.forms['google-sheet']
+
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => alert("Thanks for Contacting us..! We Will Contact You Soon..."))
+            .catch(error => console.error('Error!', error.message))
+        })
+      </script>
+    
+</body>
+</html>
